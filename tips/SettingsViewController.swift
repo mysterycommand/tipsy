@@ -35,6 +35,7 @@ class SettingsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
     @IBAction func onTap(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }

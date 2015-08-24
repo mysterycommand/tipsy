@@ -157,32 +157,20 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fkb-oP-xVZ">
                                 <rect key="frame" x="255" y="200" width="41" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Done">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="mN4-G2-3wm" appends="YES" id="D30-O4-bMy"/>
+                                    <action selector="onTap:" destination="wl4-By-XVa" eventType="touchUpInside" id="y4v-Ur-CHq"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="qP8-4Q-UEP"/>
-                    <connections>
-                        <outlet property="badField" destination="kma-1k-qJG" id="ZVj-IQ-XOU"/>
-                        <outlet property="doneButton" destination="fkb-oP-xVZ" id="Igb-Bx-tk1"/>
-                        <outlet property="goodField" destination="uSL-zo-hxG" id="FJL-uu-9SI"/>
-                        <outlet property="okayField" destination="gdb-0h-3Y4" id="xnU-JU-VXd"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRp-gT-9bn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="mN4-G2-3wm">
-                    <connections>
-                        <action selector="onTap:" destination="wl4-By-XVa" id="8MU-F1-knt"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1199" y="306"/>
         </scene>
