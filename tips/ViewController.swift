@@ -26,13 +26,14 @@ class ViewController: UIViewController {
         var defaults = NSUserDefaults.standardUserDefaults()
         if let userPercents = defaults.objectForKey("percents") as! [Double]? {
             percents = userPercents
+//            println(percents)
         }
         
         defaults.setObject(percents, forKey: "percents")
         defaults.synchronize()
         
         for (index, percent) in enumerate(percents) {
-            let title = String(format: "%d%%", Int(percent * 100))
+            let title = String(format: "%.2f%%", percent * 100)
             percentsControl.setTitle(title, forSegmentAtIndex: index)
         }
     }

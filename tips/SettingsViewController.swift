@@ -27,13 +27,13 @@ class SettingsViewController: UIViewController {
         defaults.setObject(percents, forKey: "percents")
         defaults.synchronize()
         
-        let badPercent = Int(percents[0] * 100)
-        let okayPercent = Int(percents[1] * 100)
-        let goodPercent = Int(percents[2] * 100)
+        let bad = percents[0] * 100
+        let okay = percents[1] * 100
+        let good = percents[2] * 100
 
-        badField.text = "18" // String(format: "%d", badPercent)
-        okayField.text = "20" // String(format: "%d", okayPercent)
-        goodField.text = "22" // String(format: "%d", goodPercent)
+        badField.text = String(format: "%.2f", bad)
+        okayField.text = String(format: "%.2f", okay)
+        goodField.text = String(format: "%.2f", good)
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +53,17 @@ class SettingsViewController: UIViewController {
     */
 
     @IBAction func onTapDone(sender: AnyObject) {
+        let bad = badField.text._bridgeToObjectiveC().doubleValue / 100
+        let okay = okayField.text._bridgeToObjectiveC().doubleValue / 100
+        let good = goodField.text._bridgeToObjectiveC().doubleValue / 100
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject([bad, okay, good], forKey: "percents")
+        defaults.synchronize()
+//        if let userPercents = defaults.objectForKey("percents") as! [Double]? {
+//            println(userPercents)
+//        }
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
 
