@@ -27,11 +27,13 @@ class SettingsViewController: UIViewController {
         defaults.setObject(percents, forKey: "percents")
         defaults.synchronize()
         
-        println(Int(percents[0] * 100))
+        let badPercent = Int(percents[0] * 100)
+        let okayPercent = Int(percents[1] * 100)
+        let goodPercent = Int(percents[2] * 100)
 
-        badField.text = String(format: "%d", Int(percents[0] * 100))
-        okayField.text = String(format: "%d", Int(percents[1] * 100))
-        goodField.text = String(format: "%d", Int(percents[2] * 100))
+        badField.text = "18" // String(format: "%d", badPercent)
+        okayField.text = "20" // String(format: "%d", okayPercent)
+        goodField.text = "22" // String(format: "%d", goodPercent)
     }
 
     override func didReceiveMemoryWarning() {
