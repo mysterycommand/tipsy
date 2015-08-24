@@ -48,6 +48,15 @@ class ViewController: UIViewController {
         }
         
         percentsControl.selectedSegmentIndex = defaultPercentIndex
+
+        let bill = billField.text._bridgeToObjectiveC().doubleValue
+        
+        let percent = percents[percentsControl.selectedSegmentIndex]
+        let tip = bill * percent
+        let total = bill + tip
+        
+        tipLabel.text = String(format: "$%.2f", tip)
+        totalLabel.text = String(format: "$%.2f", total)
     }
 
     override func didReceiveMemoryWarning() {

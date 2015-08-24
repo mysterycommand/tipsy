@@ -75,10 +75,6 @@ class SettingsViewController: UIViewController {
         let okay = okayField.text._bridgeToObjectiveC().doubleValue / 100
         let good = goodField.text._bridgeToObjectiveC().doubleValue / 100
         
-        println(bad)
-        println(okay)
-        println(good)
-        
         for (index, percent) in enumerate([bad, okay, good]) {
             let title = String(format: "%.1f%%", percent * 100)
             defaultControl.setTitle(title, forSegmentAtIndex: index)
