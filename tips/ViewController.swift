@@ -16,26 +16,38 @@ class ViewController: UIViewController {
     @IBOutlet weak var percentsControl: UISegmentedControl!
     
     var percents: [Double] = [0.18, 0.20, 0.22]
+    var defaultPercentIndex = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
-        
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
         var defaults = NSUserDefaults.standardUserDefaults()
+
         if let userPercents = defaults.objectForKey("percents") as! [Double]? {
             percents = userPercents
-//            println(percents)
+            println(percents)
+        }
+        
+        if let userDefaultPercentIndex = defaults.objectForKey("defaultPercentIndex") as! Int? {
+            defaultPercentIndex = userDefaultPercentIndex
         }
         
         defaults.setObject(percents, forKey: "percents")
         defaults.synchronize()
         
         for (index, percent) in enumerate(percents) {
-            let title = String(format: "%.2f%%", percent * 100)
+            let title = String(format: "%.1f%%", percent * 100)
             percentsControl.setTitle(title, forSegmentAtIndex: index)
         }
+        
+        percentsControl.selectedSegmentIndex = defaultPercentIndex
     }
 
     override func didReceiveMemoryWarning() {
