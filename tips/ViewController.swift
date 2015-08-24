@@ -15,13 +15,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var percentsControl: UISegmentedControl!
     
-    let percents = [0.18, 0.20, 0.22]
+    var percents: [Double] = [0.18, 0.20, 0.22]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
+        
+        var defaults = NSUserDefaults.standardUserDefaults()
+        if let userPercents = defaults.objectForKey("percents") as! [Double]? {
+            percents = userPercents
+        }
+        
+        defaults.setObject(percents, forKey: "percents")
+        defaults.synchronize()
         
         for (index, percent) in enumerate(percents) {
             let title = String(format: "%d%%", Int(percent * 100))

@@ -14,10 +14,24 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var okayField: UITextField!
     @IBOutlet weak var goodField: UITextField!
 
+    var percents: [Double] = [0.18, 0.20, 0.22]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let userPercents = defaults.objectForKey("percents") as! [Double]? {
+            percents = userPercents
+        }
+        
+        defaults.setObject(percents, forKey: "percents")
+        defaults.synchronize()
+        
+        println(Int(percents[0] * 100))
 
-        // Do any additional setup after loading the view.
+        badField.text = String(format: "%d", Int(percents[0] * 100))
+        okayField.text = String(format: "%d", Int(percents[1] * 100))
+        goodField.text = String(format: "%d", Int(percents[2] * 100))
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +50,7 @@ class SettingsViewController: UIViewController {
     }
     */
 
-    @IBAction func onTap(sender: AnyObject) {
+    @IBAction func onTapDone(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
